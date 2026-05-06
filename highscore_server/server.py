@@ -58,6 +58,9 @@ def add_score():
     if not name:
         return jsonify({"error": "Name is required"}), 400
 
+    if score <= 0:
+        return jsonify({"error": "Score is invalid"}), 400
+
     conn = get_db()
     cursor = conn.cursor()
     cursor.execute("INSERT INTO scores (name, score) VALUES (?, ?)", (name, score))
