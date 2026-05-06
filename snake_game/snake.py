@@ -4,6 +4,7 @@ import curses
 import random
 import time
 import requests
+import sys
 
 
 SERVER_URL = "http://localhost:5000"
@@ -38,7 +39,10 @@ def draw_border(win):
 def draw_snake(win, snake):
     for i, (y, x) in enumerate(snake):
         if i == 0:
-            win.addch(y, x, "@")
+            try:
+                win.addch(y, x, "@")
+            except Exception as ex:
+                sys.exit(f"Out of rectangle line! Y: {y} X: {x}\n{ex}")
         else:
             win.addch(y, x, "#")
 
