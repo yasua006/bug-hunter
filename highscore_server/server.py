@@ -32,7 +32,7 @@ def init_db():
 def get_highscores():
     conn = get_db()
     cursor = conn.cursor()
-    cursor.execute("SELECT id, name, score, created_at FROM scores ORDER BY name DESC LIMIT 10")
+    cursor.execute("SELECT id, name, score, created_at FROM scores ORDER BY score DESC LIMIT 10")
     rows = cursor.fetchall()
     conn.close()
 
