@@ -190,13 +190,14 @@ def main(stdscr):
     scores = get_highscores()
     show_highscores(stdscr, scores)
 
+    name = ask_name(stdscr)
+
     while True:
         score, quit_early, reason = game_loop(stdscr)
 
         show_game_over(stdscr, score, reason)
 
         if score > 0:
-            name = ask_name(stdscr)
             if name:
                 submitted = submit_score(name, score)
 
